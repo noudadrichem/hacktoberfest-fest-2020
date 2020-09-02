@@ -20,3 +20,4 @@ Heb je geen idee maar wil je meedoen? Buckle up en zet 1 october in je agenda!
 Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naam hieronder!
 
 - [Noud Adrichem](https://github.com/noudadrichem)
+- [Sebastiaan Saarloos](https://github.com/sebastiaan1997)
