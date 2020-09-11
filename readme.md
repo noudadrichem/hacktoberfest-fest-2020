@@ -25,9 +25,9 @@ Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naa
 
 
 # Readibles (edibles but for nerds)
-
+- MUST READ: [Confused by git? Here's a git crash course to fix that 🎉](https://dev.to/chrisachard/confused-by-git-here-s-a-git-crash-course-to-fix-that-4cmi)
 - [Clean coding principles](https://deepaksisodiya.hashnode.dev/5-best-practices-for-clean-coding-in-javascript-ckewx32f801e7ggs1ddys9m3f)
 - [Writing better GIT messages](https://dev.to/helderburato/patterns-for-writing-better-git-commit-messages-4ba0)
 - [The JavaScript Engine visualed](https://dev.to/lydiahallie/javascript-visualized-the-javascript-engine-4cdf)
 - [Ultimate Road Map to Study JavaScript : Basics to Advanced](https://dev.to/zinox9/road-map-to-study-javascript-4o3c)
-- [Async programming basics every JS developer should know](Async programming basics every JS developer should know)
+- [Async programming basics every JS developer should know](https://dev.to/siwalikm/async-programming-basics-every-js-developer-should-know-in-2018-a9c)
