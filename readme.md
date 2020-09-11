@@ -22,3 +22,12 @@ Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naa
 - [Noud Adrichem](https://github.com/noudadrichem)
 - [Sebastiaan Saarloos](https://github.com/sebastiaan1997)
 - [Mike "AeonLucid"](https://github.com/AeonLucid)
+
+
+# Readibles (edibles but for nerds)
+
+- [Clean coding principles](https://deepaksisodiya.hashnode.dev/5-best-practices-for-clean-coding-in-javascript-ckewx32f801e7ggs1ddys9m3f)
+- [Writing better GIT messages](https://dev.to/helderburato/patterns-for-writing-better-git-commit-messages-4ba0)
+- [The JavaScript Engine visualed](https://dev.to/lydiahallie/javascript-visualized-the-javascript-engine-4cdf)
+- [Ultimate Road Map to Study JavaScript : Basics to Advanced](https://dev.to/zinox9/road-map-to-study-javascript-4o3c)
+- [Async programming basics every JS developer should know](Async programming basics every JS developer should know)
