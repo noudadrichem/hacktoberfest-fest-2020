@@ -10,7 +10,7 @@ Nu aan jullie de eerste vraag: Heb jij een tof idee die je samen met behulp van 
 
 Freundliche Grüße Noud
 
-P.S. Weet je niet wat Hacktoberfest is? Kijk dan even hier: https://hacktoberfest.digitalocean.com/ en meld je meteen aan!
+P.S. Weet je niet wat Hacktoberfest is? Kijk dan even hier: https://hacktoberfest.digitalocean.com/ en meld je meteen aan! Of lees [dit handige artikel](https://medium.com/developer-student-clubs-tiet/what-is-hacktoberfest-2020-and-the-notion-of-open-source-e0bb7b191b45)
 
 Heb je wel een idee maar heb je geen zin om mee te doen. Laat ons alsnog je idee horen! 
 Heb je geen idee maar wil je meedoen? Buckle up en zet 1 october in je agenda!
