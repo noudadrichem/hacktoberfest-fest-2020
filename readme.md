@@ -23,6 +23,7 @@ Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naa
 - [Sebastiaan Saarloos](https://github.com/sebastiaan1997)
 - [Mike "AeonLucid"](https://github.com/AeonLucid)
 - [Jeroen van Diepen](https://github.com/jeroenvandiepen)
+- [Dennis Mamedov](https://github.com/DennisMamedov)
 
 
 # Readibles (edibles but for nerds)
