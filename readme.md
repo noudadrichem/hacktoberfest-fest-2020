@@ -25,6 +25,7 @@ Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naa
 - [Jeroen van Diepen](https://github.com/jeroenvandiepen)
 - [Dennis Mamedov](https://github.com/DennisMamedov)
 - [Joost Lekkerkerker](https://github.com/joostlek)
+- [Martijn Noordermeer](https://github.com/NorthLake)
 
 
 # Readibles (edibles but for nerds)
