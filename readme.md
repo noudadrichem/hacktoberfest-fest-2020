@@ -24,6 +24,7 @@ Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naa
 - [Mike "AeonLucid"](https://github.com/AeonLucid)
 - [Jeroen van Diepen](https://github.com/jeroenvandiepen)
 - [Dennis Mamedov](https://github.com/DennisMamedov)
+- [Joost Lekkerkerker](https://github.com/joostlek)
 
 
 # Readibles (edibles but for nerds)
