@@ -36,3 +36,4 @@ Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naa
 - [The JavaScript Engine visualed](https://dev.to/lydiahallie/javascript-visualized-the-javascript-engine-4cdf)
 - [Ultimate Road Map to Study JavaScript : Basics to Advanced](https://dev.to/zinox9/road-map-to-study-javascript-4o3c)
 - [Async programming basics every JS developer should know](https://dev.to/siwalikm/async-programming-basics-every-js-developer-should-know-in-2018-a9c)
+- MUSTREAD: [Preptember is ending!!](https://go.digitalocean.com/index.php/email/emailWebview?mkt_tok=eyJpIjoiTldOaFpUaGtZbVprWmpJdyIsInQiOiJwVFNnU1FFM2wzaXd4UHdlWWNMRDNhOTM2Y2VNS1ZNeVRValMyOXpUcXJ1ZlZJVWJTRTA5ZTVBTTR5TDRLVCtKQWVxRkJBTS9YSU1acjJvQTQyZ3owZ2RxR2FtQVkrRDM0UDdMR2pNQUMrTXdrdmdydjVmbnIvbk1ZWmcwYTZIdCJ9)
