@@ -28,6 +28,8 @@ Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naa
 - [Martijn Noordermeer](https://github.com/NorthLake)
 - [Morris Waaijer](https://github.com/kaasbroodju)
 - [Jurgen Braan](https://github.com/jurgen1507)
+- [Subodh Aryal](https://github.com/asubodh)
+
 
 # Readibles (edibles but for nerds)
 - MUST READ: [Confused by git? Here's a git crash course to fix that 🎉](https://dev.to/chrisachard/confused-by-git-here-s-a-git-crash-course-to-fix-that-4cmi)
