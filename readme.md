@@ -1,6 +1,6 @@
 # Het grote "Indicium Hacktoberfest fest"
 
-![Visual poster for this event](https://media.discordapp.net/attachments/748882677058240524/750353883385036913/hacktoberfest-meta-img.png?width=1136&height=852 "Visual poster for this event")
+![Visual poster for this event](https://i.ibb.co/DWQHWBm/iteration-6.png "Visual poster for this event")
 
 Aankomende oktober is het weer Hacktoberfest, een initiatief van Github & Digital Ocean waarbij Open Source de hele maand Oktober in de picture staat. <br/>
 Nu organiseer ik ([Noud](https://github.com/noudadrichem)) samen met Indicium het; Indicium Hacktoberfest Fest.
