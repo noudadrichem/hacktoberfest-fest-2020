@@ -1,0 +1,26 @@
+{
+    "name": "vue-example",
+    "version": "0.0.1",
+    "main": "public/vue-example.umd.js",
+    "module": "public/vue-example.esm.js",
+    "unpkg": "public/vue-example.min.js",
+    "browser": {
+        "./sfc": "src/vue-example.vue"
+    },
+    "scripts": {
+        "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+        "build:umd": "rollup --config ./rollup.config.js --format umd --file public/vue-example.umd.js",
+        "build:es": "rollup --config ./rollup.config.js --format es --file public/vue-example.esm.js",
+        "build:unpkg": "rollup --config ./rollup.config.js --format iife --file public/vue-example.min.js",
+        "dev": "rollup --config ./rollup.config.js --format es --file public/vue-example.esm.js -w"
+    },
+    "devDependencies": {
+        "@rollup/plugin-buble": "^0.21.3",
+        "@rollup/plugin-commonjs": "^11.1.0",
+        "rollup": "^1.17.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-vue": "^5.0.1",
+        "vue": "^2.6.10",
+        "vue-template-compiler": "^2.6.10"
+    }
+}
