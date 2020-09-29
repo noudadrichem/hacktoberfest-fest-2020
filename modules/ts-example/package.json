@@ -13,8 +13,8 @@
   },
   "license": "ISC",
   "author": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "public/index.js",
+  "types": "public/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"

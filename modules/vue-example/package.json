@@ -1,18 +1,18 @@
 {
     "name": "vue-example",
     "version": "0.0.1",
-    "main": "dist/vue-example.umd.js",
-    "module": "dist/vue-example.esm.js",
-    "unpkg": "dist/vue-example.min.js",
+    "main": "public/vue-example.umd.js",
+    "module": "public/vue-example.esm.js",
+    "unpkg": "public/vue-example.min.js",
     "browser": {
         "./sfc": "src/vue-example.vue"
     },
     "scripts": {
         "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-        "build:umd": "rollup --config ./rollup.config.js --format umd --file dist/vue-example.umd.js",
-        "build:es": "rollup --config ./rollup.config.js --format es --file dist/vue-example.esm.js",
-        "build:unpkg": "rollup --config ./rollup.config.js --format iife --file dist/vue-example.min.js",
-        "dev": "rollup --config ./rollup.config.js --format es --file dist/vue-example.esm.js -w"
+        "build:umd": "rollup --config ./rollup.config.js --format umd --file public/vue-example.umd.js",
+        "build:es": "rollup --config ./rollup.config.js --format es --file public/vue-example.esm.js",
+        "build:unpkg": "rollup --config ./rollup.config.js --format iife --file public/vue-example.min.js",
+        "dev": "rollup --config ./rollup.config.js --format es --file public/vue-example.esm.js -w"
     },
     "devDependencies": {
         "@rollup/plugin-buble": "^0.21.3",
