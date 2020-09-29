@@ -6,11 +6,11 @@
 
 # Het project!
 Dus wat we gaan maken is een dashboard waarin allerlei widgets in geïntegreerd kunnen worden. Het wordt dus 1 pagina met allerlei ‘blokken’. De voertaal waarin wij dit gaan maken zal TypeScript zijn. Dit om de basis van JavaScript te behouden maar ook om professioneel aan de slag te kunnen. Er zijn al wat modules bedacht maar voel je vrij om zelf wat te bedenken. Dat maakt dit project immers heel leuk! <br/>
-Voor verdere info/uitleg van het project is meer [te vinden in het mapje](https://github.com/svIndicium/hacktoberfest-fest-2020/blob/master/docs/index.md)
+Voor verdere info/uitleg van het project is meer [te vinden in het mapje](https://github.com/svIndicium/hacktoberfest-fest-2020/tree/master/_docs)
 
 # Opzet en uitleg van het project
-Hierover lees je meer in [het _docs mapje in de repository...](https://github.com/svIndicium/hacktoberfest-fest-2020/blob/master/docs/index.md) <br/>
-Hier wel al een kleine glimps.
+Hierover lees je meer in [het _docs mapje in de repository...](https://github.com/svIndicium/hacktoberfest-fest-2020/tree/master/_docs) onder project.md <br/>
+Onderstaand wel al een kleine glimps.
 
 ### Architectuur project.
 ![](https://i.ibb.co/9yTFGwH/hacktoberfest-code-base-flow.png)
