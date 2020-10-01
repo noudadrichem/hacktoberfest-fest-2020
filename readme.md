@@ -37,6 +37,7 @@ Ben je geintreseerd om mee te doen? Fork/Clone dan deze repository en zet je naa
 - [Morris Waaijer](https://github.com/kaasbroodju)
 - [Jurgen Braan](https://github.com/jurgen1507)
 - [Subodh Aryal](https://github.com/asubodh)
+- [Fabian te Raaij](https://github.com/fatraaij)
 
 
 # Readibles (edibles but for nerds)
