@@ -1,0 +1,26 @@
+{
+    "name": "vue-spotify",
+    "version": "0.0.1",
+    "main": "public/vue-spotify.umd.js",
+    "module": "public/vue-spotify.esm.js",
+    "unpkg": "public/vue-spotify.min.js",
+    "browser": {
+        "./sfc": "src/vue-spotify.vue"
+    },
+    "scripts": {
+        "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+        "build:umd": "rollup --config ./rollup.config.js --format umd --file public/vue-spotify.umd.js",
+        "build:es": "rollup --config ./rollup.config.js --format es --file public/vue-spotify.esm.js",
+        "build:unpkg": "rollup --config ./rollup.config.js --format iife --file public/vue-spotify.min.js",
+        "dev": "rollup --config ./rollup.config.js --format es --file public/vue-spotify.esm.js -w"
+    },
+    "devDependencies": {
+        "@rollup/plugin-buble": "^0.21.3",
+        "@rollup/plugin-commonjs": "^11.1.0",
+        "rollup": "^1.17.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-vue": "^5.0.1",
+        "vue": "^2.6.10",
+        "vue-template-compiler": "^2.6.10"
+    }
+}

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-      <Example />
+      <Spotify />
   </div>
 </template>
 
 <script>
-import Example from '../../modules/vue-example'
+import Spotify from '../../modules/vue-spotify'
 
 export default {
   name: 'App',
   components: {
-    Example
+    Spotify
   }
 }
 </script>
