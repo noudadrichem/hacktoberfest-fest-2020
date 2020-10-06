@@ -8456,32 +8456,13 @@
     }, 0);
   }
 
-  function unwrapExports (x) {
-  	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+  function sum(a, b) {
+      return a + b;
   }
-
-  function createCommonjsModule(fn, module) {
-  	return module = { exports: {} }, fn(module, module.exports), module.exports;
-  }
-
-  var _public = createCommonjsModule(function (module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  exports.sum = void 0;
-  function sum(x, y) {
-      return x + y;
-  }
-  exports.sum = sum;
-
-  });
-
-  var index$1 = unwrapExports(_public);
-  var _public_1 = _public.sum;
 
   var quickmathz = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    'default': index$1,
-    __moduleExports: _public,
-    sum: _public_1
+    sum: sum
   });
 
   var script = Vue.extend({
@@ -8491,7 +8472,7 @@
     }); },
     computed: {
         plusFive: function plusFive() {
-            return _public_1(this.sumUp, 5);
+            return sum(this.sumUp, 5);
         }
     },
     mounted: function mounted() {
