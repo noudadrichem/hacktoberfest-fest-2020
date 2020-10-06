@@ -1,41 +1,19 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-require('dotenv/config');
-var tty = require('tty');
-var util = require('util');
-var supportsColor = require('supports-color');
-var crypto = require('crypto');
-var fs = require('fs');
-var path = require('path');
-var events = require('events');
-var buffer = require('buffer');
-var querystring = require('querystring');
-var stream = require('stream');
-var os = require('os');
-var http = require('http');
-var https = require('https');
-var url = require('url');
-var zlib = require('zlib');
-
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-var tty__default = /*#__PURE__*/_interopDefaultLegacy(tty);
-var util__default = /*#__PURE__*/_interopDefaultLegacy(util);
-var supportsColor__default = /*#__PURE__*/_interopDefaultLegacy(supportsColor);
-var crypto__default = /*#__PURE__*/_interopDefaultLegacy(crypto);
-var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
-var path__default = /*#__PURE__*/_interopDefaultLegacy(path);
-var events__default = /*#__PURE__*/_interopDefaultLegacy(events);
-var buffer__default = /*#__PURE__*/_interopDefaultLegacy(buffer);
-var querystring__default = /*#__PURE__*/_interopDefaultLegacy(querystring);
-var stream__default = /*#__PURE__*/_interopDefaultLegacy(stream);
-var os__default = /*#__PURE__*/_interopDefaultLegacy(os);
-var http__default = /*#__PURE__*/_interopDefaultLegacy(http);
-var https__default = /*#__PURE__*/_interopDefaultLegacy(https);
-var url__default = /*#__PURE__*/_interopDefaultLegacy(url);
-var zlib__default = /*#__PURE__*/_interopDefaultLegacy(zlib);
+import 'dotenv/config';
+import tty from 'tty';
+import util from 'util';
+import supportsColor from 'supports-color';
+import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
+import events from 'events';
+import buffer from 'buffer';
+import querystring from 'querystring';
+import stream from 'stream';
+import os from 'os';
+import http from 'http';
+import https from 'https';
+import url from 'url';
+import zlib from 'zlib';
 
 var Request = function(builder) {
   if (!builder) {
@@ -872,9 +850,9 @@ exports.colors = [6, 2, 3, 4, 5, 1];
 try {
   // Optional dependency (as in, doesn't need to be installed, NOT like optionalDependencies in package.json)
   // eslint-disable-next-line import/no-extraneous-dependencies
-  var supportsColor = supportsColor__default['default'];
+  var supportsColor$1 = supportsColor;
 
-  if (supportsColor && (supportsColor.stderr || supportsColor).level >= 2) {
+  if (supportsColor$1 && (supportsColor$1.stderr || supportsColor$1).level >= 2) {
     exports.colors = [20, 21, 26, 27, 32, 33, 38, 39, 40, 41, 42, 43, 44, 45, 56, 57, 62, 63, 68, 69, 74, 75, 76, 77, 78, 79, 80, 81, 92, 93, 98, 99, 112, 113, 128, 129, 134, 135, 148, 149, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 178, 179, 184, 185, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 214, 215, 220, 221];
   }
 } catch (error) {} // Swallow - we only care if `supports-color` is available; it doesn't have to be.
@@ -914,7 +892,7 @@ exports.inspectOpts = Object.keys(process.env).filter(function (key) {
  */
 
 function useColors() {
-  return 'colors' in exports.inspectOpts ? Boolean(exports.inspectOpts.colors) : tty__default['default'].isatty(process.stderr.fd);
+  return 'colors' in exports.inspectOpts ? Boolean(exports.inspectOpts.colors) : tty.isatty(process.stderr.fd);
 }
 /**
  * Adds ANSI color escape codes if enabled.
@@ -951,7 +929,7 @@ function getDate() {
 
 
 function log() {
-  return process.stderr.write(util__default['default'].format.apply(util__default['default'], arguments) + '\n');
+  return process.stderr.write(util.format.apply(util, arguments) + '\n');
 }
 /**
  * Save `namespaces`.
@@ -1006,7 +984,7 @@ var formatters = module.exports.formatters;
 
 formatters.o = function (v) {
   this.inspectOpts.colors = this.useColors;
-  return util__default['default'].inspect(v, this.inspectOpts).replace(/\s*\n\s*/g, ' ');
+  return util.inspect(v, this.inspectOpts).replace(/\s*\n\s*/g, ' ');
 };
 /**
  * Map %O to `util.inspect()`, allowing multiple lines if needed.
@@ -1015,7 +993,7 @@ formatters.o = function (v) {
 
 formatters.O = function (v) {
   this.inspectOpts.colors = this.useColors;
-  return util__default['default'].inspect(v, this.inspectOpts);
+  return util.inspect(v, this.inspectOpts);
 };
 });
 var node_1 = node.init;
@@ -1042,7 +1020,7 @@ if (typeof process === 'undefined' || process.type === 'renderer' || process.bro
 
 if (commonjsGlobal.GENTLY) commonjsRequire = GENTLY.hijack(commonjsRequire);
 
-var EventEmitter = events__default['default'].EventEmitter;
+var EventEmitter = events.EventEmitter;
 
 function File(properties) {
   EventEmitter.call(this);
@@ -1061,16 +1039,16 @@ function File(properties) {
   }
 
   if(typeof this.hash === 'string') {
-    this.hash = crypto__default['default'].createHash(properties.hash);
+    this.hash = crypto.createHash(properties.hash);
   } else {
     this.hash = null;
   }
 }
 var file = File;
-util__default['default'].inherits(File, EventEmitter);
+util.inherits(File, EventEmitter);
 
 File.prototype.open = function() {
-  this._writeStream = new fs__default['default'].WriteStream(this.path);
+  this._writeStream = new fs.WriteStream(this.path);
 };
 
 File.prototype.toJSON = function() {
@@ -1120,7 +1098,7 @@ File.prototype.end = function(cb) {
 };
 
 var multipart_parser = createCommonjsModule(function (module, exports) {
-var Buffer = buffer__default['default'].Buffer,
+var Buffer = buffer.Buffer,
     s = 0,
     S =
     { PARSER_UNINITIALIZED: s++,
@@ -1473,7 +1451,7 @@ QuerystringParser.prototype.write = function(buffer) {
 };
 
 QuerystringParser.prototype.end = function() {
-  var fields = querystring__default['default'].parse(this.buffer, '&', '=', { maxKeys: this.maxKeys });
+  var fields = querystring.parse(this.buffer, '&', '=', { maxKeys: this.maxKeys });
   for (var field in fields) {
     this.onField(field, fields[field]);
   }
@@ -1486,14 +1464,14 @@ var querystring_parser = {
 	QuerystringParser: QuerystringParser_1
 };
 
-var EventEmitter$1 = events__default['default'].EventEmitter;
+var EventEmitter$1 = events.EventEmitter;
 
 function OctetParser(options){
 	if(!(this instanceof OctetParser)) return new OctetParser(options);
 	EventEmitter$1.call(this);
 }
 
-util__default['default'].inherits(OctetParser, EventEmitter$1);
+util.inherits(OctetParser, EventEmitter$1);
 
 var OctetParser_1 = OctetParser;
 
@@ -1512,7 +1490,7 @@ var octet_parser = {
 
 if (commonjsGlobal.GENTLY) commonjsRequire = GENTLY.hijack(commonjsRequire);
 
-var Buffer$1 = buffer__default['default'].Buffer;
+var Buffer$1 = buffer.Buffer;
 
 function JSONParser(parent) {
   this.parent = parent;
@@ -1548,7 +1526,7 @@ var json_parser = {
 var safeBuffer = createCommonjsModule(function (module, exports) {
 /* eslint-disable node/no-deprecated-api */
 
-var Buffer = buffer__default['default'].Buffer;
+var Buffer = buffer.Buffer;
 
 // alternative to using Object.keys for old browsers
 function copyProps (src, dst) {
@@ -1557,10 +1535,10 @@ function copyProps (src, dst) {
   }
 }
 if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
-  module.exports = buffer__default['default'];
+  module.exports = buffer;
 } else {
   // Copy properties from require('buffer')
-  copyProps(buffer__default['default'], exports);
+  copyProps(buffer, exports);
   exports.Buffer = SafeBuffer;
 }
 
@@ -1606,7 +1584,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   if (typeof size !== 'number') {
     throw new TypeError('Argument must be a number')
   }
-  return buffer__default['default'].SlowBuffer(size)
+  return buffer.SlowBuffer(size)
 };
 });
 var safeBuffer_1 = safeBuffer.Buffer;
@@ -1897,8 +1875,8 @@ var MultipartParser = multipart_parser.MultipartParser,
     OctetParser$1       = octet_parser.OctetParser,
     JSONParser$1 = json_parser.JSONParser,
     StringDecoder$1 = string_decoder.StringDecoder,
-    EventEmitter$2 = events__default['default'].EventEmitter,
-    Stream = stream__default['default'].Stream;
+    EventEmitter$2 = events.EventEmitter,
+    Stream = stream.Stream;
 
 function IncomingForm(opts) {
   if (!(this instanceof IncomingForm)) return new IncomingForm(opts);
@@ -1913,7 +1891,7 @@ function IncomingForm(opts) {
   this.maxFieldsSize = opts.maxFieldsSize || 20 * 1024 * 1024;
   this.maxFileSize = opts.maxFileSize || 200 * 1024 * 1024;
   this.keepExtensions = opts.keepExtensions || false;
-  this.uploadDir = opts.uploadDir || (os__default['default'].tmpdir && os__default['default'].tmpdir()) || os__default['default'].tmpDir();
+  this.uploadDir = opts.uploadDir || (os.tmpdir && os.tmpdir()) || os.tmpDir();
   this.encoding = opts.encoding || 'utf-8';
   this.headers = null;
   this.type = null;
@@ -1931,7 +1909,7 @@ function IncomingForm(opts) {
 
   return this;
 }
-util__default['default'].inherits(IncomingForm, EventEmitter$2);
+util.inherits(IncomingForm, EventEmitter$2);
 var IncomingForm_1 = IncomingForm;
 
 IncomingForm.prototype.parse = function(req, cb) {
@@ -2186,7 +2164,7 @@ IncomingForm.prototype._error = function(err) {
   if (Array.isArray(this.openedFiles)) {
     this.openedFiles.forEach(function(file) {
       file._writeStream.destroy();
-      setTimeout(fs__default['default'].unlink, 0, file.path, function(error) { });
+      setTimeout(fs.unlink, 0, file.path, function(error) { });
     });
   }
 };
@@ -2422,17 +2400,17 @@ IncomingForm.prototype._initJSONencoded = function() {
 };
 
 IncomingForm.prototype._uploadPath = function(filename) {
-  var buf = crypto__default['default'].randomBytes(16);
+  var buf = crypto.randomBytes(16);
   var name = 'upload_' + buf.toString('hex');
 
   if (this.keepExtensions) {
-    var ext = path__default['default'].extname(filename);
+    var ext = path.extname(filename);
     ext     = ext.replace(/(\.[a-z0-9]+).*/i, '$1');
 
     name += ext;
   }
 
-  return path__default['default'].join(this.uploadDir, name);
+  return path.join(this.uploadDir, name);
 };
 
 IncomingForm.prototype._maybeEnd = function() {
@@ -2451,7 +2429,7 @@ var IncomingForm$1 = incoming_form.IncomingForm;
 IncomingForm$1.IncomingForm = IncomingForm$1;
 var lib = IncomingForm$1;
 
-var Stream$1 = stream__default['default'].Stream;
+var Stream$1 = stream.Stream;
 
 
 var delayed_stream = DelayedStream;
@@ -2465,7 +2443,7 @@ function DelayedStream() {
   this._released = false;
   this._bufferedEvents = [];
 }
-util__default['default'].inherits(DelayedStream, Stream$1);
+util.inherits(DelayedStream, Stream$1);
 
 DelayedStream.create = function(source, options) {
   var delayedStream = new this();
@@ -2559,7 +2537,7 @@ DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
   this.emit('error', new Error(message));
 };
 
-var Stream$2 = stream__default['default'].Stream;
+var Stream$2 = stream.Stream;
 
 
 var combined_stream = CombinedStream;
@@ -2576,7 +2554,7 @@ function CombinedStream() {
   this._insideLoop = false;
   this._pendingNext = false;
 }
-util__default['default'].inherits(CombinedStream, Stream$2);
+util.inherits(CombinedStream, Stream$2);
 
 CombinedStream.create = function(options) {
   var combinedStream = new this();
@@ -13100,7 +13078,7 @@ var mimeTypes = createCommonjsModule(function (module, exports) {
  */
 
 
-var extname = path__default['default'].extname;
+var extname = path.extname;
 
 /**
  * Module variables.
@@ -13654,7 +13632,7 @@ var populate = function(dst, src) {
   return dst;
 };
 
-var parseUrl = url__default['default'].parse;
+var parseUrl = url.parse;
 
 
 
@@ -13664,7 +13642,7 @@ var parseUrl = url__default['default'].parse;
 var form_data = FormData;
 
 // make it a Stream
-util__default['default'].inherits(FormData, combined_stream);
+util.inherits(FormData, combined_stream);
 
 /**
  * Create readable "multipart/form-data" streams.
@@ -13711,7 +13689,7 @@ FormData.prototype.append = function(field, value, options) {
   }
 
   // https://github.com/felixge/node-form-data/issues/38
-  if (util__default['default'].isArray(value)) {
+  if (util.isArray(value)) {
     // Please convert your array into string
     // the way web server expects it
     this._error(new Error('Arrays are not supported.'));
@@ -13783,7 +13761,7 @@ FormData.prototype._lengthRetriever = function(value, callback) {
     // not that fast snoopy
     } else {
       // still need to fetch file size from fs
-      fs__default['default'].stat(value.path, function(err, stat) {
+      fs.stat(value.path, function(err, stat) {
 
         var fileSize;
 
@@ -13873,15 +13851,15 @@ FormData.prototype._getContentDisposition = function(value, options) {
 
   if (typeof options.filepath === 'string') {
     // custom filepath for relative paths
-    filename = path__default['default'].normalize(options.filepath).replace(/\\/g, '/');
+    filename = path.normalize(options.filepath).replace(/\\/g, '/');
   } else if (options.filename || value.name || value.path) {
     // custom filename take precedence
     // formidable and the browser add a name property
     // fs- and request- streams have path property
-    filename = path__default['default'].basename(options.filename || value.name || value.path);
+    filename = path.basename(options.filename || value.name || value.path);
   } else if (value.readable && value.hasOwnProperty('httpVersion')) {
     // or try http response
-    filename = path__default['default'].basename(value.client._httpMessage.path || '');
+    filename = path.basename(value.client._httpMessage.path || '');
   }
 
   if (filename) {
@@ -14096,9 +14074,9 @@ FormData.prototype.submit = function(params, cb) {
 
   // https if specified, fallback to http in any other case
   if (options.protocol == 'https:') {
-    request = https__default['default'].request(options);
+    request = https.request(options);
   } else {
-    request = http__default['default'].request(options);
+    request = http.request(options);
   }
 
   // get content length and fire away
@@ -14374,7 +14352,7 @@ var response = Response;
  */
 
 function Response(req) {
-  stream__default['default'].call(this);
+  stream.call(this);
   const res = (this.res = req.res);
   this.request = req;
   this.req = req.req;
@@ -14396,7 +14374,7 @@ function Response(req) {
  * Inherit from `Stream`.
  */
 
-util__default['default'].inherits(Response, stream__default['default']);
+util.inherits(Response, stream);
 responseBase(Response.prototype);
 
 /**
@@ -14487,7 +14465,7 @@ var methods = getCurrentNodeMethods() || getBasicNodeMethods();
  */
 
 function getCurrentNodeMethods() {
-  return http__default['default'].METHODS && http__default['default'].METHODS.map(function lowerCaseMethod(method) {
+  return http.METHODS && http.METHODS.map(function lowerCaseMethod(method) {
     return method.toLowerCase();
   });
 }
@@ -14545,20 +14523,20 @@ const StringDecoder$2 = string_decoder.StringDecoder;
  */
 
 var unzip_1 = (req, res) => {
-  const unzip = zlib__default['default'].createUnzip();
-  const stream = new stream__default['default']();
+  const unzip = zlib.createUnzip();
+  const stream$1 = new stream();
   let decoder;
 
   // make node responseOnEnd() happy
-  stream.req = req;
+  stream$1.req = req;
 
   unzip.on('error', err => {
     if (err && err.code === 'Z_BUF_ERROR') {
       // unexpected end of file is ignored by browsers and curl
-      stream.emit('end');
+      stream$1.emit('end');
       return;
     }
-    stream.emit('error', err);
+    stream$1.emit('error', err);
   });
 
   // pipe to unzip
@@ -14573,23 +14551,23 @@ var unzip_1 = (req, res) => {
   unzip.on('data', buf => {
     if (decoder) {
       const str = decoder.write(buf);
-      if (str.length) stream.emit('data', str);
+      if (str.length) stream$1.emit('data', str);
     } else {
-      stream.emit('data', buf);
+      stream$1.emit('data', buf);
     }
   });
 
   unzip.on('end', () => {
-    stream.emit('end');
+    stream$1.emit('end');
   });
 
   // override `on` to capture data listeners
   const _on = res.on;
   res.on = function(type, fn) {
     if ('data' == type || 'end' == type) {
-      stream.on(type, fn);
+      stream$1.on(type, fn);
     } else if ('error' == type) {
-      stream.on(type, fn);
+      stream$1.on(type, fn);
       _on.call(res, type, fn);
     } else {
       _on.call(res, type, fn);
@@ -17533,7 +17511,7 @@ Mime.prototype.load = function(file) {
   this._loading = file;
   // Read file and split into lines
   var map = {},
-      content = fs__default['default'].readFileSync(file, 'ascii'),
+      content = fs.readFileSync(file, 'ascii'),
       lines = content.split(/[\r\n]+/);
 
   lines.forEach(function(line) {
@@ -19582,7 +19560,7 @@ var agentBase = Agent;
 
 const CookieJar = cookiejar.CookieJar;
 const CookieAccess = cookiejar.CookieAccessInfo;
-const parse$2 = url__default['default'].parse;
+const parse$2 = url.parse;
 
 
 
@@ -19755,9 +19733,9 @@ const debug = src('superagent');
 
 
 
-const parse = url__default['default'].parse;
-const format = url__default['default'].format;
-const resolve = url__default['default'].resolve;
+const parse = url.parse;
+const format = url.format;
+const resolve = url.resolve;
 let methods$1 = methods;
 
 
@@ -19825,8 +19803,8 @@ mime_1.define({
  */
 
 exports.protocols = {
-  'http:': http__default['default'],
-  'https:': https__default['default'],
+  'http:': http,
+  'https:': https,
 };
 
 /**
@@ -19879,7 +19857,7 @@ function _initHeaders(req) {
  */
 
 function Request(method, url) {
-  stream__default['default'].call(this);
+  stream.call(this);
   if ('string' != typeof url) url = format(url);
   this._agent = false;
   this._formData = null;
@@ -19902,7 +19880,7 @@ function Request(method, url) {
  * Inherit from `Stream` (which inherits from `EventEmitter`).
  * Mixin `RequestBase`.
  */
-util__default['default'].inherits(Request, stream__default['default']);
+util.inherits(Request, stream);
 requestBase(Request.prototype);
 
 /**
@@ -19944,7 +19922,7 @@ Request.prototype.attach = function(field, file, options){
     if ('string' == typeof file) {
       if (!o.filename) o.filename = file;
       debug('creating `fs.ReadStream` instance for file: %s', file);
-      file = fs__default['default'].createReadStream(file);
+      file = fs.createReadStream(file);
     } else if (!o.filename && file.path) {
       o.filename = file.path;
     }
@@ -20107,7 +20085,7 @@ Request.prototype._pipeContinue = function(stream, options){
     if (this._aborted) return;
 
     if (this._shouldUnzip(res)) {
-      const unzipObj = zlib__default['default'].createUnzip();
+      const unzipObj = zlib.createUnzip();
       unzipObj.on('error', err => {
         if (err && err.code === 'Z_BUF_ERROR') { // unexpected end of file is ignored by browsers and curl
           stream.emit('end');
@@ -20447,7 +20425,7 @@ Request.prototype.callback = function(err, res){
       if (!this._isResponseOK(res)) {
         let msg = 'Unsuccessful HTTP response';
         if (res) {
-          msg = http__default['default'].STATUS_CODES[res.status] || msg;
+          msg = http.STATUS_CODES[res.status] || msg;
         }
         err = new Error(msg);
         err.status = res ? res.status : undefined;
@@ -20482,7 +20460,7 @@ Request.prototype.callback = function(err, res){
  * @api private
  */
 Request.prototype._isHost = function _isHost(obj) {
-  return Buffer.isBuffer(obj) || obj instanceof stream__default['default'] || obj instanceof form_data;
+  return Buffer.isBuffer(obj) || obj instanceof stream || obj instanceof form_data;
 };
 
 /**
@@ -20703,7 +20681,7 @@ Request.prototype._end = function() {
     const total = req.getHeader('Content-Length');
     let loaded = 0;
 
-    const progress = new stream__default['default'].Transform();
+    const progress = new stream.Transform();
     progress._transform = (chunk, encoding, cb) => {
       loaded += chunk.length;
       this.emit('progress', {
@@ -20719,7 +20697,7 @@ Request.prototype._end = function() {
 
   const bufferToChunks = (buffer) => {
     const chunkSize = 16 * 1024; // default highWaterMark value
-    const chunking = new stream__default['default'].Readable();
+    const chunking = new stream.Readable();
     const totalLength = buffer.length;
     const remainder = totalLength % chunkSize;
     const cutoff = totalLength - remainder;
@@ -22632,4 +22610,4 @@ function login() {
 }
 // TODO get signed in user playlists...
 
-exports.login = login;
+export { login };

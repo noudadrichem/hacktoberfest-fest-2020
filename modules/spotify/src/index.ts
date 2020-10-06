@@ -8,17 +8,27 @@ const spotifyApi = new SpotifyWebApi({
   redirectUri: 'http://www.example.com/callback'
 });
 
-spotifyApi.setAccessToken(process.env.SPOTIFY_ACCESSTOKEN || '')
+// spotifyApi.setAccessToken(process.env.SPOTIFY_ACCESSTOKEN || '')
 
+// spotifyApi.getArtistAlbums(
+//   '43ZHCT0cAZBISjO8DG9PnE',
+//   { limit: 10, offset: 20 },
+//   (err: any, data: any) => {
+//     if (err) {
+//       console.error('Something went wrong!');
+//     } else {
+//       console.log(data.body);
+//     }
+//   }
+// );
 
-spotifyApi.getArtistAlbums(
-  '43ZHCT0cAZBISjO8DG9PnE',
-  { limit: 10, offset: 20 },
-  function(err, data) {
-    if (err) {
-      console.error('Something went wrong!');
-    } else {
-      console.log(data.body);
+export function login() {
+    // TODO hier dus een login met spotify account.
+    return {
+        moetje: 'hoi',
+        foo: 'bar'
     }
-  }
-);
+}
+
+// TODO get signed in user playlists...
+
