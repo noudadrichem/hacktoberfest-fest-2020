@@ -1,1 +1,1 @@
-export declare function sum(x: number, y: number): number;
+export declare function sum(a: number, b: number): number;

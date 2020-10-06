@@ -8450,46 +8450,27 @@ if (inBrowser) {
   }, 0);
 }
 
-function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+function sum(a, b) {
+    return a + b;
 }
 
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-var _public = createCommonjsModule(function (module, exports) {
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.sum = void 0;
-function sum(x, y) {
-    return x + y;
-}
-exports.sum = sum;
-
-});
-
-var index$1 = unwrapExports(_public);
-var _public_1 = _public.sum;
-
-var quickmathz = /*#__PURE__*/Object.freeze({
+var x = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  'default': index$1,
-  __moduleExports: _public,
-  sum: _public_1
+  sum: sum
 });
 
 var script = Vue.extend({
   data: function () { return ({
     text: "world",
-    sumUp: 17,
+    sumUp: 32,
   }); },
   computed: {
       plusFive: function plusFive() {
-          return _public_1(this.sumUp, 5);
+          return sum(this.sumUp, 5);
       }
   },
   mounted: function mounted() {
-    console.log("example on mount...", quickmathz);
+    console.log("example on mount...", x);
   },
 });
 
@@ -8567,6 +8548,7 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
     }
     return script;
 }
+//# sourceMappingURL=normalize-component.mjs.map
 
 var isOldIE = typeof navigator !== 'undefined' &&
     /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
@@ -8620,6 +8602,7 @@ function addStyle(id, css) {
         }
     }
 }
+//# sourceMappingURL=browser.mjs.map
 
 /* script */
 var __vue_script__ = script;
@@ -8641,11 +8624,11 @@ __vue_render__._withStripped = true;
   /* style */
   var __vue_inject_styles__ = function (inject) {
     if (!inject) { return }
-    inject("data-v-7ad5d7a7_0", { source: "h1[data-v-7ad5d7a7] {\n  color: grey;\n}\n\n/*# sourceMappingURL=example.vue.map */", map: {"version":3,"sources":["/Users/noudadrichem/code/hacktoberfest-fest-2020/modules/vue-example/src/example.vue","example.vue"],"names":[],"mappings":"AA4BA;EACA,WAAA;AC3BA;;AAEA,sCAAsC","file":"example.vue","sourcesContent":["<template>\n<div>\n    <h1>Hello {{ text }}</h1>\n    <p>{{ plusFive }}</p>\n</div>\n</template>\n\n<script lang=\"ts\">\nimport Vue from \"vue\";\nimport * as quickmathz from \"../../ts-example\";\n\nexport default Vue.extend({\n  data: () => ({\n    text: \"world\",\n    sumUp: 17,\n  }),\n  computed: {\n      plusFive() {\n          return quickmathz.sum(this.sumUp, 5);\n      }\n  },\n  mounted() {\n    console.log(\"example on mount...\", quickmathz);\n  },\n});\n</script>\n\n<style lang=\"scss\" scoped>\nh1 {\n  color: grey;\n}\n</style>\n","h1 {\n  color: grey;\n}\n\n/*# sourceMappingURL=example.vue.map */"]}, media: undefined });
+    inject("data-v-43eaea5d_0", { source: "h1[data-v-43eaea5d] {\n  color: grey;\n}\n\n/*# sourceMappingURL=example.vue.map */", map: {"version":3,"sources":["/Users/noudadrichem/code/hacktoberfest-fest-2020/modules/vue-example/src/example.vue","example.vue"],"names":[],"mappings":"AA4BA;EACA,WAAA;AC3BA;;AAEA,sCAAsC","file":"example.vue","sourcesContent":["<template>\n<div>\n    <h1>Hello {{ text }}</h1>\n    <p>{{ plusFive }}</p>\n</div>\n</template>\n\n<script lang=\"ts\">\nimport Vue from \"vue\";\nimport * as x from \"../../ts-example\";\n\nexport default Vue.extend({\n  data: () => ({\n    text: \"world\",\n    sumUp: 32,\n  }),\n  computed: {\n      plusFive() {\n          return x.sum(this.sumUp, 5);\n      }\n  },\n  mounted() {\n    console.log(\"example on mount...\", x);\n  },\n});\n</script>\n\n<style lang=\"scss\" scoped>\nh1 {\n  color: grey;\n}\n</style>\n","h1 {\n  color: grey;\n}\n\n/*# sourceMappingURL=example.vue.map */"]}, media: undefined });
 
   };
   /* scoped */
-  var __vue_scope_id__ = "data-v-7ad5d7a7";
+  var __vue_scope_id__ = "data-v-43eaea5d";
   /* module identifier */
   var __vue_module_identifier__ = undefined;
   /* functional template */

@@ -7,20 +7,20 @@
 
 <script lang="ts">
 import Vue from "vue";
-import * as quickmathz from "../../ts-example";
+import * as x from "../../ts-example";
 
 export default Vue.extend({
   data: () => ({
     text: "world",
-    sumUp: 17,
+    sumUp: 32,
   }),
   computed: {
       plusFive() {
-          return quickmathz.sum(this.sumUp, 5);
+          return x.sum(this.sumUp, 5);
       }
   },
   mounted() {
-    console.log("example on mount...", quickmathz);
+    console.log("example on mount...", x);
   },
 });
 </script>
