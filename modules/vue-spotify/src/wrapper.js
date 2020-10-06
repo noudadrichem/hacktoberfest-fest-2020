@@ -1,9 +1,9 @@
-import Spotify from "./spotify.vue";
+import component from "./spotify.vue";
 
 export function install(Vue) {
     if (install.installed) return;
     install.installed = true;
-    Vue.component("Spotify", Spotify);
+    Vue.component("Spotify", component);
 }
 
 const plugin = {

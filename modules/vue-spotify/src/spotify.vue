@@ -7,22 +7,19 @@
 
 <script lang="ts">
 import Vue from "vue";
-import * as spotify from "../../spotify";
+import * as x from '../../spotify';
 
 export default Vue.extend({
   data: () => ({
     text: "world",
     sumUp: 30,
   }),
-  
   mounted() {
-    console.log("example on mount...");
+    console.log("example on mount...", x);
   },
 });
 </script>
 
 <style lang="scss" scoped>
-h1 {
-  color: grey;
-}
+
 </style>
