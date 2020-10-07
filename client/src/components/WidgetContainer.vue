@@ -22,12 +22,13 @@ export default Vue.extend({
   display: grid;
   grid-template-columns: repeat(4, minmax(360px, 1fr));
   grid-gap: 1.2rem;
-  min-height: 100vh;
-    background: var(--secondary-background-color);
+  padding: 32px 24px 32px 24px;
+  min-height: calc(100vh - 64px); // - nav height
+  background: var(--secondary-background-color);
 
-    .widget {
-        background: var(--root-background-color);
-        border-radius: 8px;
-    }
+  .widget {
+    background: var(--root-background-color);
+    border-radius: 8px;
+  }
 }
 </style>

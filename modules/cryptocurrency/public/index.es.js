@@ -51,6 +51,26 @@ function __generator(thisArg, body) {
     }
 }
 
+function getAvailableCoinIds() {
+    return __awaiter(this, void 0, void 0, function () {
+        var url;
+        return __generator(this, function (_a) {
+            url = 'https://api.coingecko.com/api/v3/coins/list';
+            return [2 /*return*/, fetch(url)
+                    .then(function (s) { return s.json(); })
+                    .then(function (response) {
+                    return response
+                        .filter(function (coin) { return !(coin.name.startsWith('0.5X') ||
+                        coin.name.startsWith('1X') ||
+                        coin.name.startsWith('3X')); })
+                        .map(function (coin) { return ({
+                        id: coin.id,
+                        name: coin.name
+                    }); });
+                })];
+        });
+    });
+}
 function getFromDateRange(coinId, start, end) {
     // TODO 1 month or 1 week default...
 }
@@ -63,5 +83,30 @@ function getCoinToday(coinId) {
         });
     });
 }
+function getCoinsToday(coins) {
+    return __awaiter(this, void 0, void 0, function () {
+        var tmp, i, coin, response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    tmp = [];
+                    i = 0;
+                    _a.label = 1;
+                case 1:
+                    if (!(i < coins.length)) return [3 /*break*/, 4];
+                    coin = coins[i];
+                    return [4 /*yield*/, getCoinToday(coin)];
+                case 2:
+                    response = _a.sent();
+                    tmp.push(response);
+                    _a.label = 3;
+                case 3:
+                    i++;
+                    return [3 /*break*/, 1];
+                case 4: return [2 /*return*/, tmp];
+            }
+        });
+    });
+}
 
-export { getCoinToday, getFromDateRange };
+export { getAvailableCoinIds, getCoinToday, getCoinsToday, getFromDateRange };
