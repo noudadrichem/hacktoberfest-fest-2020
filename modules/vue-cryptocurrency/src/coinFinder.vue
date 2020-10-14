@@ -15,17 +15,19 @@ export default Vue.extend({
   name: "CoinFinder",
   data: () => ({
     availableCoins: [],
-    selected: [{ code: "iota", label: "iota" }],
+    selected: [],
   }),
   watch: {
     selected(next) {
       window.localStorage.setItem("COINS", JSON.stringify(next));
+      this.$emit("onChange", this.selected);
     },
   },
   mounted() {
     const hasCoins = window.localStorage.getItem("COINS");
     if (hasCoins) {
-      this.$set(this, "coins", JSON.parse(hasCoins));
+      this.$set(this, "selected", JSON.parse(hasCoins));
+      this.$emit("onMount", this.selected);
     }
     this.fetchAvailableCoins();
   },

@@ -8465,6 +8465,19 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        var arguments$1 = arguments;
+
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments$1[i];
+            for (var p in s) { if (Object.prototype.hasOwnProperty.call(s, p)) { t[p] = s[p]; } }
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
 function __awaiter(thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8547,7 +8560,7 @@ function getCoinsToday(coins) {
                     return [4 /*yield*/, getCoinToday(coin)];
                 case 2:
                     response = _a.sent();
-                    tmp.push(response);
+                    tmp.push(__assign({ name: coin }, response[coin]));
                     _a.label = 3;
                 case 3:
                     i++;
@@ -8855,17 +8868,19 @@ var script$2 = Vue.extend({
   name: "CoinFinder",
   data: function () { return ({
     availableCoins: [],
-    selected: [{ code: "iota", label: "iota" }],
+    selected: [],
   }); },
   watch: {
     selected: function selected(next) {
       window.localStorage.setItem("COINS", JSON.stringify(next));
+      this.$emit("onChange", this.selected);
     },
   },
   mounted: function mounted() {
     var hasCoins = window.localStorage.getItem("COINS");
     if (hasCoins) {
-      this.$set(this, "coins", JSON.parse(hasCoins));
+      this.$set(this, "selected", JSON.parse(hasCoins));
+      this.$emit("onMount", this.selected);
     }
     this.fetchAvailableCoins();
   },
@@ -8916,7 +8931,7 @@ __vue_render__$2._withStripped = true;
   /* style */
   var __vue_inject_styles__$2 = function (inject) {
     if (!inject) { return }
-    inject("data-v-56c8a022_0", { source: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", map: {"version":3,"sources":[],"names":[],"mappings":"","file":"coinFinder.vue"}, media: undefined });
+    inject("data-v-42adef16_0", { source: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", map: {"version":3,"sources":[],"names":[],"mappings":"","file":"coinFinder.vue"}, media: undefined });
 
   };
   /* scoped */
@@ -8947,7 +8962,7 @@ __vue_render__$2._withStripped = true;
 var script$3 = Vue.extend({
   components: {
     Cross: __vue_component__,
-    Search: __vue_component__$1,
+    SearchIcon: __vue_component__$1,
     CoinFinder: __vue_component__$2,
   },
   data: function () { return ({
@@ -8957,23 +8972,23 @@ var script$3 = Vue.extend({
   mounted: function mounted() {
     var hasCoins = window.localStorage.getItem("COINS");
     if (hasCoins) {
-        console.log('has coins..?');
       this.$set(this, "coins", JSON.parse(hasCoins));
     }
     this.fetchSelectedCoins();
-    this.fetchAvailableCoins();
   },
   methods: {
-    fetchSelectedCoins: function fetchSelectedCoins() {
+    fetchSelectedCoins: function fetchSelectedCoins(selected) {
       var this$1 = this;
-      var coins = this.coins.map(function (ref) {
+
+      var coins = [selected !== undefined ? selected : this.coins][0].map(function (ref) {
         var code = ref.code;
 
         return code;
-      });
-      getCoinsToday(coins).then(function (response) {
-        this$1.$set(this$1, "coinStats", response);
-      });
+      }); // ! wtf is this
+      getCoinsToday(coins)
+        .then(function (response) {
+          this$1.$set(this$1, "coinStats", response);
+        });
     },
   },
 });
@@ -8990,22 +9005,50 @@ var __vue_render__$3 = function() {
     "div",
     { staticClass: "widget crypto" },
     [
-      _c("CoinFinder"),
+      _c("h1", [_vm._v("Crypto Wallet")]),
       _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "tab-container" },
-        [
-          _vm._l(_vm.coins, function(coin) {
-            return _c("li", { key: coin.code, staticClass: "tab" }, [
-              _vm._v("\n      " + _vm._s(coin.label) + "\n    ")
-            ])
-          }),
-          _vm._v(" "),
-          _c("li", { staticClass: "tab search" }, [_c("Search")], 1)
-        ],
-        2
-      )
+      _c("CoinFinder", {
+        on: {
+          onChange: _vm.fetchSelectedCoins,
+          onMount: _vm.fetchSelectedCoins
+        }
+      }),
+      _vm._v(" "),
+      _vm.coinStats.length > 0 && _vm.coinStats[0] !== {}
+        ? _c(
+            "div",
+            { staticClass: "coin-card-container" },
+            _vm._l(_vm.coinStats, function(stats) {
+              return _c("div", { key: stats.name, staticClass: "coin-card" }, [
+                _c("span", { staticClass: "coin-card-name" }, [
+                  _vm._v(_vm._s(stats.name))
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("div", { staticClass: "coin-card-price" }, [
+                    _vm._v("EUR: " + _vm._s(stats.eur))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      class: [
+                        "coin-card-change",
+                        stats.eur_24h_change < 0 ? "red" : "green"
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "24H: " + _vm._s(Math.floor(stats.eur_24h_change)) + "%"
+                      )
+                    ]
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        : _vm._e()
     ],
     1
   )
@@ -9016,11 +9059,11 @@ __vue_render__$3._withStripped = true;
   /* style */
   var __vue_inject_styles__$3 = function (inject) {
     if (!inject) { return }
-    inject("data-v-503758cb_0", { source: ".tab-container[data-v-503758cb] {\n  display: flex;\n}\n.tab-container .tab[data-v-503758cb] {\n  flex: 1;\n  padding: 8px;\n  margin: 3px;\n  background: lightgrey;\n}\n.tab-container .tab.search[data-v-503758cb] {\n  max-width: 32px;\n}\n\n/*# sourceMappingURL=main.vue.map */", map: {"version":3,"sources":["/Users/noudadrichem/code/hacktoberfest-fest-2020/modules/vue-cryptocurrency/src/main.vue","main.vue"],"names":[],"mappings":"AAwDA;EACA,aAAA;ACvDA;ADyDA;EACA,OAAA;EACA,YAAA;EACA,WAAA;EACA,qBAAA;ACvDA;ADyDA;EACA,eAAA;ACvDA;;AAEA,mCAAmC","file":"main.vue","sourcesContent":["<template>\n  <div class=\"widget crypto\">\n    <CoinFinder />\n    <ul class=\"tab-container\">\n      <li class=\"tab\" v-for=\"coin in coins\" :key=\"coin.code\">\n        {{ coin.label }}\n      </li>\n      <li class=\"tab search\">\n        <Search />\n      </li>\n    </ul>\n\n    <!-- <pre>{{ $data.coinStats }}</pre> -->\n  </div>\n</template>\n\n<script lang=\"ts\">\nimport Vue from \"vue\";\n\nimport * as CryptoService from \"../../cryptocurrency\";\nimport Cross from \"./cross.vue\";\nimport Search from \"./search.vue\";\nimport CoinFinder from \"./coinFinder.vue\";\n\nexport default Vue.extend({\n  components: {\n    Cross,\n    Search,\n    CoinFinder,\n  },\n  data: () => ({\n    coinStats: [],\n    coins: [],\n  }),\n  mounted() {\n    const hasCoins = window.localStorage.getItem(\"COINS\");\n    if (hasCoins) {\n        console.log('has coins..?')\n      this.$set(this, \"coins\", JSON.parse(hasCoins));\n    }\n    this.fetchSelectedCoins();\n    this.fetchAvailableCoins();\n  },\n  methods: {\n    fetchSelectedCoins() {\n      const tmp = [];\n      const coins = this.coins.map(({ code }) => code);\n      CryptoService.getCoinsToday(coins).then((response) => {\n        this.$set(this, \"coinStats\", response);\n      });\n    },\n  },\n});\n</script>\n\n<style lang=\"scss\" scoped>\n.tab-container {\n  display: flex;\n\n  .tab {\n    flex: 1;\n    padding: 8px;\n    margin: 3px;\n    background: lightgrey;\n\n    &.search {\n      max-width: 32px;\n    }\n  }\n}\n</style>\n",".tab-container {\n  display: flex;\n}\n.tab-container .tab {\n  flex: 1;\n  padding: 8px;\n  margin: 3px;\n  background: lightgrey;\n}\n.tab-container .tab.search {\n  max-width: 32px;\n}\n\n/*# sourceMappingURL=main.vue.map */"]}, media: undefined });
+    inject("data-v-a8ecd254_0", { source: ".widget[data-v-a8ecd254] {\n  padding: 12px;\n}\nh1[data-v-a8ecd254] {\n  font-size: 2.5rem;\n  margin: 0 0 8px 0;\n  text-align: center;\n}\n.tab-container[data-v-a8ecd254] {\n  display: flex;\n}\n.tab-container .tab[data-v-a8ecd254] {\n  flex: 1;\n  padding: 8px;\n  margin: 3px;\n  background: lightgrey;\n}\n.tab-container .tab.search[data-v-a8ecd254] {\n  max-width: 32px;\n}\n.coin-card-container[data-v-a8ecd254] {\n  margin-top: 24px;\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-gap: 1.5rem;\n}\n.coin-card-container .coin-card[data-v-a8ecd254] {\n  display: flex;\n  flex-direction: column;\n  text-align: center;\n  border-radius: 4px;\n  box-shadow: 0px 1px 2px rgba(0, 16, 75, 0.2);\n  padding: 12px;\n}\n.coin-card-container .coin-card-name[data-v-a8ecd254] {\n  font-size: 1.5rem;\n  margin-bottom: 12px;\n}\n.coin-card-container .coin-card-price[data-v-a8ecd254] {\n  font-size: 1rem;\n}\n.coin-card-container .coin-card .red[data-v-a8ecd254] {\n  color: red;\n}\n.coin-card-container .coin-card .green[data-v-a8ecd254] {\n  color: green;\n}\n\n/*# sourceMappingURL=main.vue.map */", map: {"version":3,"sources":["/Users/noudadrichem/code/hacktoberfest-fest-2020/modules/vue-cryptocurrency/src/main.vue","main.vue"],"names":[],"mappings":"AAsDA;EACA,aAAA;ACrDA;ADwDA;EACA,iBAAA;EACA,iBAAA;EACA,kBAAA;ACrDA;ADwDA;EACA,aAAA;ACrDA;ADuDA;EACA,OAAA;EACA,YAAA;EACA,WAAA;EACA,qBAAA;ACrDA;ADuDA;EACA,eAAA;ACrDA;AD0DA;EACA,gBAAA;EACA,aAAA;EACA,qCAAA;EACA,gBAAA;ACvDA;ADyDA;EACA,aAAA;EACA,sBAAA;EACA,kBAAA;EACA,kBAAA;EACA,4CAAA;EACA,aAAA;ACvDA;ADyDA;EACA,iBAAA;EACA,mBAAA;ACvDA;AD0DA;EACA,eAAA;ACxDA;AD2DA;EACA,UAAA;ACzDA;AD2DA;EACA,YAAA;ACzDA;;AAEA,mCAAmC","file":"main.vue","sourcesContent":["<template>\n  <div class=\"widget crypto\">\n    <h1>Crypto Wallet</h1>\n    <CoinFinder @onChange=\"fetchSelectedCoins\" @onMount=\"fetchSelectedCoins\" />\n    <div class=\"coin-card-container\" v-if=\"coinStats.length > 0 && coinStats[0] !== {}\">\n      <div v-for=\"stats in coinStats\" :key=\"stats.name\" class=\"coin-card\">\n        <span class=\"coin-card-name\">{{ stats.name }}</span>\n        <div>\n          <div class=\"coin-card-price\">EUR: {{ stats.eur }}</div>\n          <div :class=\"['coin-card-change', stats.eur_24h_change < 0 ? 'red' : 'green' ]\">24H: {{ Math.floor(stats.eur_24h_change) }}%</div>\n        </div>\n      </div>\n    </div>\n  </div>\n</template>\n\n<script lang=\"ts\">\nimport Vue from \"vue\";\n\nimport * as CryptoService from \"../../cryptocurrency\";\nimport Cross from \"./cross.vue\";\nimport SearchIcon from \"./search.vue\";\nimport CoinFinder from \"./coinFinder.vue\";\n\nexport default Vue.extend({\n  components: {\n    Cross,\n    SearchIcon,\n    CoinFinder,\n  },\n  data: () => ({\n    coinStats: [],\n    coins: [],\n  }),\n  mounted() {\n    const hasCoins = window.localStorage.getItem(\"COINS\");\n    if (hasCoins) {\n      this.$set(this, \"coins\", JSON.parse(hasCoins));\n    }\n    this.fetchSelectedCoins();\n  },\n  methods: {\n    fetchSelectedCoins(selected) {\n      const coins = [selected !== undefined ? selected : this.coins][0].map(({ code }) => code); // ! wtf is this\n      CryptoService.getCoinsToday(coins)\n        .then((response) => {\n          this.$set(this, \"coinStats\", response);\n        });\n    },\n  },\n});\n</script>\n\n<style lang=\"scss\" scoped>\n.widget {\n  padding: 12px;\n}\n\nh1 {\n  font-size: 2.5rem;\n  margin: 0 0 8px 0;\n  text-align: center;\n}\n\n.tab-container {\n  display: flex;\n\n  .tab {\n    flex: 1;\n    padding: 8px;\n    margin: 3px;\n    background: lightgrey;\n\n    &.search {\n      max-width: 32px;\n    }\n  }\n}\n\n.coin-card-container {\n  margin-top: 24px;\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-gap: 1.5rem;\n\n  .coin-card {\n    display: flex;\n    flex-direction: column;\n    text-align: center;\n    border-radius: 4px;\n    box-shadow: 0px 1px 2px rgba(0,16,75,0.2);\n    padding: 12px;\n\n    &-name {\n      font-size: 1.5rem;\n      margin-bottom: 12px;\n    }\n\n    &-price {\n      font-size: 1rem;\n    }\n\n    .red {\n      color: red;\n    }\n    .green {\n      color: green;\n    }\n  }\n}\n</style>\n",".widget {\n  padding: 12px;\n}\n\nh1 {\n  font-size: 2.5rem;\n  margin: 0 0 8px 0;\n  text-align: center;\n}\n\n.tab-container {\n  display: flex;\n}\n.tab-container .tab {\n  flex: 1;\n  padding: 8px;\n  margin: 3px;\n  background: lightgrey;\n}\n.tab-container .tab.search {\n  max-width: 32px;\n}\n\n.coin-card-container {\n  margin-top: 24px;\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-gap: 1.5rem;\n}\n.coin-card-container .coin-card {\n  display: flex;\n  flex-direction: column;\n  text-align: center;\n  border-radius: 4px;\n  box-shadow: 0px 1px 2px rgba(0, 16, 75, 0.2);\n  padding: 12px;\n}\n.coin-card-container .coin-card-name {\n  font-size: 1.5rem;\n  margin-bottom: 12px;\n}\n.coin-card-container .coin-card-price {\n  font-size: 1rem;\n}\n.coin-card-container .coin-card .red {\n  color: red;\n}\n.coin-card-container .coin-card .green {\n  color: green;\n}\n\n/*# sourceMappingURL=main.vue.map */"]}, media: undefined });
 
   };
   /* scoped */
-  var __vue_scope_id__$3 = "data-v-503758cb";
+  var __vue_scope_id__$3 = "data-v-a8ecd254";
   /* module identifier */
   var __vue_module_identifier__$3 = undefined;
   /* functional template */

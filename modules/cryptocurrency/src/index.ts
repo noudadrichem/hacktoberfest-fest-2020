@@ -32,7 +32,10 @@ export async function getCoinsToday(coins: string[]) {
     for (let i = 0; i < coins.length; i++) {
         const coin = coins[i];
         const response = await getCoinToday(coin);
-        tmp.push(response);
+        tmp.push({
+          name: coin,
+          ...response[coin]
+        });
     }
     return tmp;
 }
