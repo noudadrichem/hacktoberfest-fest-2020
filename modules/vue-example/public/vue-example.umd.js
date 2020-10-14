@@ -8460,7 +8460,7 @@
       return a + b;
   }
 
-  var quickmathz = /*#__PURE__*/Object.freeze({
+  var x = /*#__PURE__*/Object.freeze({
     __proto__: null,
     sum: sum
   });
@@ -8468,7 +8468,7 @@
   var script = Vue.extend({
     data: function () { return ({
       text: "world",
-      sumUp: 17,
+      sumUp: 32,
     }); },
     computed: {
         plusFive: function plusFive() {
@@ -8476,7 +8476,7 @@
         }
     },
     mounted: function mounted() {
-      console.log("example on mount...", quickmathz);
+      console.log("example on mount...", x);
     },
   });
 
@@ -8616,7 +8616,7 @@
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
-    return _c("div", [
+    return _c("div", { staticClass: "widget example" }, [
       _c("h1", [_vm._v("Hello " + _vm._s(_vm.text))]),
       _vm._v(" "),
       _c("p", [_vm._v(_vm._s(_vm.plusFive))])
@@ -8628,11 +8628,11 @@
     /* style */
     var __vue_inject_styles__ = function (inject) {
       if (!inject) { return }
-      inject("data-v-7ad5d7a7_0", { source: "h1[data-v-7ad5d7a7] {\n  color: grey;\n}\n\n/*# sourceMappingURL=example.vue.map */", map: {"version":3,"sources":["/Users/noudadrichem/code/hacktoberfest-fest-2020/modules/vue-example/src/example.vue","example.vue"],"names":[],"mappings":"AA4BA;EACA,WAAA;AC3BA;;AAEA,sCAAsC","file":"example.vue","sourcesContent":["<template>\n<div>\n    <h1>Hello {{ text }}</h1>\n    <p>{{ plusFive }}</p>\n</div>\n</template>\n\n<script lang=\"ts\">\nimport Vue from \"vue\";\nimport * as quickmathz from \"../../ts-example\";\n\nexport default Vue.extend({\n  data: () => ({\n    text: \"world\",\n    sumUp: 17,\n  }),\n  computed: {\n      plusFive() {\n          return quickmathz.sum(this.sumUp, 5);\n      }\n  },\n  mounted() {\n    console.log(\"example on mount...\", quickmathz);\n  },\n});\n</script>\n\n<style lang=\"scss\" scoped>\nh1 {\n  color: grey;\n}\n</style>\n","h1 {\n  color: grey;\n}\n\n/*# sourceMappingURL=example.vue.map */"]}, media: undefined });
+      inject("data-v-ff440c3c_0", { source: "h1[data-v-ff440c3c] {\n  color: grey;\n}\n\n/*# sourceMappingURL=example.vue.map */", map: {"version":3,"sources":["/Users/noudadrichem/code/hacktoberfest-fest-2020/modules/vue-example/src/example.vue","example.vue"],"names":[],"mappings":"AA4BA;EACA,WAAA;AC3BA;;AAEA,sCAAsC","file":"example.vue","sourcesContent":["<template>\n<div class=\"widget example\">\n    <h1>Hello {{ text }}</h1>\n    <p>{{ plusFive }}</p>\n</div>\n</template>\n\n<script lang=\"ts\">\nimport Vue from \"vue\";\nimport * as x from \"../../ts-example\";\n\nexport default Vue.extend({\n  data: () => ({\n    text: \"world\",\n    sumUp: 32,\n  }),\n  computed: {\n      plusFive() {\n          return x.sum(this.sumUp, 5);\n      }\n  },\n  mounted() {\n    console.log(\"example on mount...\", x);\n  },\n});\n</script>\n\n<style lang=\"scss\" scoped>\nh1 {\n  color: grey;\n}\n</style>\n","h1 {\n  color: grey;\n}\n\n/*# sourceMappingURL=example.vue.map */"]}, media: undefined });
 
     };
     /* scoped */
-    var __vue_scope_id__ = "data-v-7ad5d7a7";
+    var __vue_scope_id__ = "data-v-ff440c3c";
     /* module identifier */
     var __vue_module_identifier__ = undefined;
     /* functional template */
