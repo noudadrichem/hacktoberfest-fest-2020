@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="widget example">
     <h1>Hello {{ text }}</h1>
     <p>{{ plusFive }}</p>
 </div>
